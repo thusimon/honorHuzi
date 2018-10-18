@@ -1,12 +1,16 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import connect from '../connect';
 
 class Header extends Component {
     render () {
         return (
-            <h1>React.js 小书</h1>
+            <h1 style={{color:this.props.color, backgroundColor:this.props.bgColor}}>Greetings React</h1>
         )
     }
 }
 
-export default Header
+function mapStateToProps(storeState, ownProps){
+    return {color: storeState.color, bgColor:storeState.bgColor};
+}
+export default connect(mapStateToProps)(Header);
